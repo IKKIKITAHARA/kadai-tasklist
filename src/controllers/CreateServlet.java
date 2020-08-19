@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Task;
 import utils.DBUtil;
-import validators.taskValidator;
+import validators.TaskValidator;
 /**
  * Servlet implementation class CreateServlet
  */
@@ -48,7 +48,7 @@ public class CreateServlet extends HttpServlet {
             t.setUpdated_at(currentTime);
 
             // バリデーションを実行してエラーがあったら新規登録のフォームに戻る
-            List<String> errors = taskValidator.validate(t);
+            List<String> errors = TaskValidator.validate(t);
             if(errors.size() > 0) {
                 em.close();
 

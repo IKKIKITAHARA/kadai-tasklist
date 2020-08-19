@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Task;
 import utils.DBUtil;
-import validators.taskValidator;
+import validators.TaskValidator;
 
 /**
  * Servlet implementation class Updateservlet
@@ -49,7 +49,7 @@ public class Updateservlet extends HttpServlet {
             t.setUpdated_at(currentTime); // 更新日時のみ上書き
 
             // バリデーションを実行してエラーがあったら編集画面のフォームに戻る
-            List<String> errors = taskValidator.validate(t);
+            List<String> errors = TaskValidator.validate(t);
             if (errors.size() > 0) {
                 em.close();
 
@@ -67,11 +67,6 @@ public class Updateservlet extends HttpServlet {
                 request.getSession().setAttribute("flush", "更新が完了しました。");
                 em.close();
 
-                // データベースを更新
-                em.getTransaction().begin();
-                em.getTransaction().commit();
-                request.getSession().setAttribute("flush", "更新が完了しました。");
-                em.close();
 
                 // セッションスコープ上の不要になったデータを削除
                 request.getSession().removeAttribute("task_id");

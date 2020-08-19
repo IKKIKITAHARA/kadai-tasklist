@@ -5,7 +5,7 @@ import java.util.List;
 
 import models.Task;
 
-public class taskValidator {
+public class TaskValidator {
     // バリデーションを実行する
     public static List<String> validate(Task t) {
         List<String> errors = new ArrayList<String>();
@@ -22,7 +22,7 @@ public class taskValidator {
     // メッセージの必須入力チェック
     private static String _validateContent(String content) {
         if(content == null || content.equals("")) {
-            return "メッセージを入力してください。";
+            return "タスクを入力してください。";
         }
 
         return "";
